@@ -28,8 +28,9 @@ public class UniversidadG40 {
             System.out.println(alumno.getFechaNacimiento());*/
             
         MateriaData mater= new MateriaData();
-        Materia Algebra = new Materia (1,"Filosofia", 2022, true);
-        mater.guardarMateria(Algebra);
+        Materia Algebra = new Materia ("Algebra", 2022, true);
+        //mater.guardarMateria(Algebra);
+        mater.modificarMateria(Algebra);
         /*mater.eliminarMateria(2);*/
   
     }

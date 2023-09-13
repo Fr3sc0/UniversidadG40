@@ -84,9 +84,8 @@ public class AlumnoData {
     public Alumno buscarAlumno(int id){
         String sql="SELECT dni,apellido,nombre,fechaNacimiento FROM alumno WHERE idAlumno = ? AND estado = 1";
         Alumno alu=null;
-        PreparedStatement ps=null;
          try {
-            ps= con.prepareStatement(sql);
+            PreparedStatement ps= con.prepareStatement(sql);
             ps.setInt(1, id);
             ResultSet rs=ps.executeQuery();
             if(rs.next()){
@@ -111,9 +110,9 @@ public class AlumnoData {
     public List<Alumno> listarAlumnos(){
         String sql="SELECT idAlumno, dni, apellido, nombre, fechaNacimiento FROM alumno WHERE estado = 1";
         ArrayList<Alumno> alumnos=new ArrayList<>();
-        PreparedStatement ps=null;
+        
          try {
-            ps= con.prepareStatement(sql);
+            PreparedStatement ps= con.prepareStatement(sql);
             ResultSet rs=ps.executeQuery();
             while(rs.next()){
                 Alumno alu=new Alumno();
