@@ -1,25 +1,27 @@
 
 package universidadejemplo.Entidades;
 
+import java.time.LocalDate;
+
 public class Materia {
     private int idMateria; 
-    private int anio;
     private String Nombre;
+    private int anio;
     private boolean estado;
 
     public Materia() {
     }
 
-    public Materia(int idMateria, int anio, String Nombre, boolean estado) {
-        this.idMateria = idMateria;
-        this.anio = anio;
+    public Materia(String Nombre, int anio, boolean estado) {
         this.Nombre = Nombre;
+        this.anio = anio;
         this.estado = estado;
     }
 
-    public Materia(int anio, String Nombre, boolean estado) {
-        this.anio = anio;
+    public Materia(int idMateria, String Nombre, int anio, boolean estado) {
+        this.idMateria = idMateria;
         this.Nombre = Nombre;
+        this.anio = anio;
         this.estado = estado;
     }
 
@@ -39,6 +41,8 @@ public class Materia {
         this.anio = anio;
     }
 
+    
+
     public String getNombre() {
         return Nombre;
     }
@@ -57,7 +61,7 @@ public class Materia {
 
     @Override
     public String toString() {
-        return "Materia{" + "idMateria=" + idMateria + ", anio=" + anio + ", Nombre=" + Nombre + '}';
+        return "Materia{" + "idMateria=" + idMateria +  ", Nombre=" + Nombre + ", anio=" + anio + '}';
     }
     
 }
