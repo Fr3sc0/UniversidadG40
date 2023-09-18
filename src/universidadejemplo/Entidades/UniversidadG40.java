@@ -1,16 +1,14 @@
 package universidadejemplo.Entidades;
 
 import java.time.LocalDate;
-import universidadejemplo.AccesoADatos.AlumnoData;
-import universidadejemplo.AccesoADatos.MateriaData;
-
+import universidadejemplo.AccesoADatos.*;
 
 public class UniversidadG40 {
 
     public static void main(String[] args) {
-        /*AlumnoData alu = new AlumnoData();
-        //Alumno Luna= new Alumno(1,40050123, "Luna", "Soledad", LocalDate.of(1996, 5, 10), true);
-        //alu.guardarAlumno(Luna);
+        AlumnoData alu = new AlumnoData();
+        Alumno alum= new Alumno(5, "Fiora", "Champ", LocalDate.of(2000, 10, 15), true);
+        //alu.guardarAlumno(alum);
         //alu.modificarAlumno(Luna);
         //alu.eliminarAlumno(1);
         /*
@@ -28,11 +26,18 @@ public class UniversidadG40 {
             System.out.println(alumno.getFechaNacimiento());*/
             
         MateriaData mater= new MateriaData();
-        Materia Algebra = new Materia (1,"Algebra", 2022, true);
-        //mater.guardarMateria(Algebra);
-        mater.modificarMateria(Algebra);
+        Materia Mate = new Materia ("Literatura", 2020, true);
+        mater.guardarMateria(Mate);
+        
         /*mater.eliminarMateria(2);*/
-  
+        AlumnoData ad= new AlumnoData();
+        MateriaData md= new MateriaData();
+        InscripcionData id= new InscripcionData();
+        Alumno al= ad.buscarAlumno(2);
+        Materia mat= md.buscarMateria(3);
+        Inscripcion ins= new Inscripcion(al, mat, 7);
+        id.guardarInscripcion(ins);
+        
     }
 }
 
