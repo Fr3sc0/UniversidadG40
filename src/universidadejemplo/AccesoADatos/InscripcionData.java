@@ -51,7 +51,7 @@ public class InscripcionData {
         }
     }
     public void borrarInscripcion (int idAlumno, int idMateria){
-        String sql = "DELETE inscripcion WHERE idAlumno = ? and idMateria = ?";
+        String sql = "DELETE FROM inscripcion WHERE idAlumno = ? and idMateria = ?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, idAlumno);
