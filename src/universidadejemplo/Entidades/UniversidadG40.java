@@ -27,7 +27,7 @@ public class UniversidadG40 {
             
         MateriaData mater= new MateriaData();
         Materia Mate = new Materia ("Literatura", 2020, true);
-        mater.guardarMateria(Mate);
+        //mater.guardarMateria(Mate);
         
         /*mater.eliminarMateria(2);*/
         AlumnoData ad= new AlumnoData();
@@ -36,7 +36,9 @@ public class UniversidadG40 {
         Alumno al= ad.buscarAlumno(2);
         Materia mat= md.buscarMateria(3);
         Inscripcion ins= new Inscripcion(al, mat, 7);
-        id.guardarInscripcion(ins);
+        //id.guardarInscripcion(ins);
+        //id.actualizarNota(2, 3, 6);
+        //id.borrarInscripcion(2, 3);
         
     }
 }
