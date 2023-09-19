@@ -38,7 +38,7 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
         rbEstado = new javax.swing.JRadioButton();
 
         Materia.setFont(new java.awt.Font("Sitka Small", 1, 18)); // NOI18N
-        Materia.setText("Alumno");
+        Materia.setText("Materia");
 
         jLabel2.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
         jLabel2.setText("Codigo:");
