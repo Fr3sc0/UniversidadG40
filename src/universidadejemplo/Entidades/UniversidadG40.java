@@ -40,6 +40,15 @@ public class UniversidadG40 {
         //id.actualizarNota(2, 3, 6);
         //id.borrarInscripcion(2, 3);
         
-    }
+//        for(Inscripcion insc: id.obtenerInscripciones()){
+//            System.out.println("id"+insc.getIdInscripcion());
+//            System.out.println("Apellido"+insc.getAlumno().getApellido());
+//            System.out.println("Materia"+insc.getMateria().getNombre());
+//        }
+       
+//    for(Materia materia: id.obtenerMateriasNoCursadas(3)){
+//           System.out.println("nombre"+ materia.getNombre());
+//       }
+//    }
 }
 
