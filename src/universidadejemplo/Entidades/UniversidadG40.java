@@ -50,5 +50,6 @@ public class UniversidadG40 {
 //           System.out.println("nombre"+ materia.getNombre());
 //       }
 //    }
+    }
 }
 
