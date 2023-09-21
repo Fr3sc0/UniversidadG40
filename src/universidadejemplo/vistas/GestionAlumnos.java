@@ -1,5 +1,8 @@
 package universidadejemplo.vistas;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class GestionAlumnos extends javax.swing.JInternalFrame {
 
     
@@ -61,6 +64,11 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
 
         bNuevo.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
         bNuevo.setText("Nuevo");
+        bNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bNuevoActionPerformed(evt);
+            }
+        });
 
         bGuardar.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
         bGuardar.setText("Guardar");
@@ -145,6 +153,14 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void bNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bNuevoActionPerformed
+        tfDni.setText("");
+        tfApellido.setText("");
+        tfNombre.setText("");
+       
+        
+    }//GEN-LAST:event_bNuevoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
