@@ -175,15 +175,15 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         tfNombre.setText("");
         tfAnio.setText("");
-        rbEstado.setEnabled(false);
+        rbEstado.setSelected(false);
         MateriaData md=new MateriaData();
         Materia mat= md.buscarMateria(Integer.getInteger(tfCodigo.getText()));
         tfNombre.setText(mat.getNombre());
         tfAnio.setText(Integer.toString(mat.getAnio()));
         if(mat.isEstado()){
-            rbEstado.setEnabled(true);
+            rbEstado.setSelected(true);
         }else{
-            rbEstado.setEnabled(false);
+            rbEstado.setSelected(false);
         }
         
     }//GEN-LAST:event_bBuscarActionPerformed
@@ -193,13 +193,13 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
         tfCodigo.setText("");
         tfNombre.setText("");
         tfAnio.setText("");
-        rbEstado.setEnabled(false);
+        rbEstado.setSelected(false);
     }//GEN-LAST:event_bNuevoActionPerformed
 
     private void bGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bGuardarActionPerformed
         // TODO add your handling code here:
         if(Integer.getInteger(tfCodigo.getText())<=0 || tfCodigo.equals("") || tfCodigo.equals(" ")){
-            Materia mat=new Materia(tfNombre.getText(), Integer.getInteger(tfAnio.getText()), true);
+            Materia mat=new Materia(tfNombre.getText(), Integer.getInteger(tfAnio.getText()), rbEstado.isSelected());
         }
     }//GEN-LAST:event_bGuardarActionPerformed
 
