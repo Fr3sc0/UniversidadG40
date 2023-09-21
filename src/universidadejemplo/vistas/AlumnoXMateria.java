@@ -41,11 +41,14 @@ public class AlumnoXMateria extends javax.swing.JInternalFrame {
         jLabel2.setText("Seleccione una Materia:");
 
         cbMaterias.setFont(new java.awt.Font("Sitka Text", 0, 14)); // NOI18N
+<<<<<<< Updated upstream
         cbMaterias.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbMateriasActionPerformed(evt);
             }
         });
+=======
+>>>>>>> Stashed changes
 
         tAlumnos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -152,6 +155,7 @@ for (Alumno alumno : listaAlumnos) {
     private javax.swing.JTable tAlumnos;
     // End of variables declaration//GEN-END:variables
 
+<<<<<<< Updated upstream
     private void armarCabecera(){
         
         modelo.addColumn(alumno.getNombre());
@@ -161,6 +165,8 @@ for (Alumno alumno : listaAlumnos) {
         tAlumnos.setModel(modelo);
     }
 
+=======
+>>>>>>> Stashed changes
 }
 
 

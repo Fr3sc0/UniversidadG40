@@ -1,9 +1,5 @@
 package universidadejemplo.vistas;
 
-/**
- *
- * @author Blas
- */
 public class Notas extends javax.swing.JInternalFrame {
 
     /**
