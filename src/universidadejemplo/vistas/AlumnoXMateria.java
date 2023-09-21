@@ -1,5 +1,10 @@
 package universidadejemplo.vistas;
 
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import universidadejemplo.Entidades.Materia;
+import universidadejemplo.AccesoADatos.*;
+import universidadejemplo.Entidades.Alumno;
 /**
  *
  * @author Blas
@@ -36,7 +41,11 @@ public class AlumnoXMateria extends javax.swing.JInternalFrame {
         jLabel2.setText("Seleccione una Materia:");
 
         cbMaterias.setFont(new java.awt.Font("Sitka Text", 0, 14)); // NOI18N
-        cbMaterias.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbMaterias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbMateriasActionPerformed(evt);
+            }
+        });
 
         tAlumnos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -96,6 +105,43 @@ public class AlumnoXMateria extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void cbMateriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbMateriasActionPerformed
+  
+    MateriaData md = new MateriaData();
+        
+    List<Materia> materias = md.listarMaterias();
+      
+    cbMaterias.removeAllItems();
+
+  
+    for (Materia materia : materias) {
+        cbMaterias.addItem(materia.getNombre());
+    }
+    }//GEN-LAST:event_cbMateriasActionPerformed
+
+    // Obtén una referencia al modelo de datos de tu JTable
+DefaultTableModel modelo = new DefaultTableModel();
+// Obtén la lista de alumnos
+
+AlumnoData ad = new AlumnoData();
+List<Alumno> listaAlumnos = ad.listarAlumnos();
+
+
+for (Alumno alumno : listaAlumnos) {
+
+    
+        alumno.getIdAlumno();
+        alumno.getDni();
+        alumno.getApellido();
+        alumno.getNombre();
+        alumno.getFechaNacimiento();
+    
+
+ 
+    modelo.addRow(fila);
+}
+
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bSalir;
@@ -105,4 +151,16 @@ public class AlumnoXMateria extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tAlumnos;
     // End of variables declaration//GEN-END:variables
+
+    private void armarCabecera(){
+        
+        modelo.addColumn(alumno.getNombre());
+        modelo.addColumn(alumno.getApellido());
+        modelo.addColumn(alumno.getDni());
+        modelo.addColumn(alumno.getFechaNacimiento());
+        tAlumnos.setModel(modelo);
+    }
+
 }
+
+
