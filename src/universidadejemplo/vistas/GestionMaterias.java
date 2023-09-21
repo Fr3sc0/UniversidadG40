@@ -1,5 +1,8 @@
 package universidadejemplo.vistas;
 
+import universidadejemplo.AccesoADatos.MateriaData;
+import universidadejemplo.Entidades.Materia;
+
 /**
  *
  * @author Blas
@@ -54,9 +57,19 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
 
         bNuevo.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
         bNuevo.setText("Nuevo");
+        bNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bNuevoActionPerformed(evt);
+            }
+        });
 
         bGuardar.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
         bGuardar.setText("Guardar");
+        bGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bGuardarActionPerformed(evt);
+            }
+        });
 
         bEliminar.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
         bEliminar.setText("Eliminar");
@@ -77,6 +90,11 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
 
         bBuscar.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
         bBuscar.setText("Buscar");
+        bBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bBuscarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -152,6 +170,38 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
     private void tfAnioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfAnioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tfAnioActionPerformed
+
+    private void bBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBuscarActionPerformed
+        // TODO add your handling code here:
+        tfNombre.setText("");
+        tfAnio.setText("");
+        rbEstado.setEnabled(false);
+        MateriaData md=new MateriaData();
+        Materia mat= md.buscarMateria(Integer.getInteger(tfCodigo.getText()));
+        tfNombre.setText(mat.getNombre());
+        tfAnio.setText(Integer.toString(mat.getAnio()));
+        if(mat.isEstado()){
+            rbEstado.setEnabled(true);
+        }else{
+            rbEstado.setEnabled(false);
+        }
+        
+    }//GEN-LAST:event_bBuscarActionPerformed
+
+    private void bNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bNuevoActionPerformed
+        // TODO add your handling code here:
+        tfCodigo.setText("");
+        tfNombre.setText("");
+        tfAnio.setText("");
+        rbEstado.setEnabled(false);
+    }//GEN-LAST:event_bNuevoActionPerformed
+
+    private void bGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bGuardarActionPerformed
+        // TODO add your handling code here:
+        if(Integer.getInteger(tfCodigo.getText())<=0 || tfCodigo.equals("") || tfCodigo.equals(" ")){
+            Materia mat=new Materia(tfNombre.getText(), Integer.getInteger(tfAnio.getText()), true);
+        }
+    }//GEN-LAST:event_bGuardarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
