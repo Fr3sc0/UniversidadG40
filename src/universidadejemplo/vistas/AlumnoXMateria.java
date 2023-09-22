@@ -5,6 +5,7 @@ import javax.swing.table.DefaultTableModel;
 import universidadejemplo.Entidades.Materia;
 import universidadejemplo.AccesoADatos.*;
 import universidadejemplo.Entidades.Alumno;
+
 /**
  *
  * @author Blas
@@ -109,43 +110,48 @@ public class AlumnoXMateria extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cbMateriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbMateriasActionPerformed
-  
-    MateriaData md = new MateriaData();
-        
-    List<Materia> materias = md.listarMaterias();
-      
-    cbMaterias.removeAllItems();
 
-  
-    for (Materia materia : materias) {
-        cbMaterias.addItem(materia.getNombre());
-    }
+        MateriaData md = new MateriaData();
+
+        List<Materia> materias = md.listarMaterias();
+
+        cbMaterias.removeAllItems();
+
+        for (Materia materia : materias) {
+            cbMaterias.addItem(materia.getNombre());
+        }
+
+        armarTabla();
     }//GEN-LAST:event_cbMateriasActionPerformed
+    private void armarTabla() {
 
-    // Obtén una referencia al modelo de datos de tu JTable
-DefaultTableModel modelo = new DefaultTableModel();
-// Obtén la lista de alumnos
+        String materiaSeleccionada = cbMaterias.getSelectedItem().toString();
+        DefaultTableModel modelo = new DefaultTableModel();
 
-AlumnoData ad = new AlumnoData();
-List<Alumno> listaAlumnos = ad.listarAlumnos();
+        modelo.addColumn("ID");
+        modelo.addColumn("DNI");
+        modelo.addColumn("Apellido");
+        modelo.addColumn("Nombre");
+        modelo.addColumn("Fecha de Nacimiento");
 
+        AlumnoData ad = new AlumnoData();
+        List<Alumno> listaAlumnos = ad.listarAlumnos();
 
-for (Alumno alumno : listaAlumnos) {
+        for (Alumno alumno : listaAlumnos) {
+            Object[] fila = {
+                alumno.getIdAlumno(),
+                alumno.getDni(),
+                alumno.getApellido(),
+                alumno.getNombre(),
+                alumno.getFechaNacimiento()
+            };
 
-    
-        alumno.getIdAlumno();
-        alumno.getDni();
-        alumno.getApellido();
-        alumno.getNombre();
-        alumno.getFechaNacimiento();
-    
+            modelo.addRow(fila);
+        }
 
- 
-    modelo.addRow(fila);
-}
-
-    
-
+        // Configura el modelo en la tabla
+        tAlumnos.setModel(modelo);
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bSalir;
     private javax.swing.JComboBox<String> cbMaterias;
@@ -154,19 +160,13 @@ for (Alumno alumno : listaAlumnos) {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tAlumnos;
     // End of variables declaration//GEN-END:variables
-
-<<<<<<< Updated upstream
-    private void armarCabecera(){
-        
+    /*
+    private void armarCabecera() {
         modelo.addColumn(alumno.getNombre());
         modelo.addColumn(alumno.getApellido());
         modelo.addColumn(alumno.getDni());
         modelo.addColumn(alumno.getFechaNacimiento());
         tAlumnos.setModel(modelo);
     }
-
-=======
->>>>>>> Stashed changes
+    */
 }
-
-
