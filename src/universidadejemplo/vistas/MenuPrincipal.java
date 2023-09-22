@@ -33,13 +33,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
         menuInscripciones = new javax.swing.JMenuItem();
         menuNotas = new javax.swing.JMenuItem();
         mConsultas = new javax.swing.JMenu();
-        jMenuItem6 = new javax.swing.JMenuItem();
+        AluXMat = new javax.swing.JMenuItem();
         mSalir = new javax.swing.JMenu();
 
         jMenuItem1.setText("jMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(800, 600));
 
         javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
         escritorio.setLayout(escritorioLayout);
@@ -67,6 +66,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         mMateria.setText("Materia");
 
         menuMateria.setText("Formulario de Materia");
+        menuMateria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuMateriaActionPerformed(evt);
+            }
+        });
         mMateria.add(menuMateria);
 
         jMenuBar1.add(mMateria);
@@ -74,6 +78,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         mAdministracion.setText("Administración");
 
         menuInscripciones.setText("Manejo de Inscripciones");
+        menuInscripciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuInscripcionesActionPerformed(evt);
+            }
+        });
         mAdministracion.add(menuInscripciones);
 
         menuNotas.setText("Manipulacion de Notas");
@@ -88,8 +97,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         mConsultas.setText("Consultas");
 
-        jMenuItem6.setText("Alumnos por Materia");
-        mConsultas.add(jMenuItem6);
+        AluXMat.setText("Alumnos por Materia");
+        AluXMat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AluXMatActionPerformed(evt);
+            }
+        });
+        mConsultas.add(AluXMat);
 
         jMenuBar1.add(mConsultas);
 
@@ -124,7 +138,43 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void menuNotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuNotasActionPerformed
         // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        Notas notas=new Notas();
+        notas.setVisible(true);
+        escritorio.add(notas);
+        escritorio.moveToFront(notas);
     }//GEN-LAST:event_menuNotasActionPerformed
+
+    private void menuMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuMateriaActionPerformed
+        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        GestionMaterias gm=new GestionMaterias();
+        gm.setVisible(true);
+        escritorio.add(gm);
+        escritorio.moveToFront(gm);
+    }//GEN-LAST:event_menuMateriaActionPerformed
+
+    private void menuInscripcionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuInscripcionesActionPerformed
+        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        Inscripciones ins=new Inscripciones();
+        ins.setVisible(true);
+        escritorio.add(ins);
+        escritorio.moveToFront(ins);
+    }//GEN-LAST:event_menuInscripcionesActionPerformed
+
+    private void AluXMatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AluXMatActionPerformed
+        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        AlumnoXMateria axm=new AlumnoXMateria();
+        axm.setVisible(true);
+        escritorio.add(axm);
+        escritorio.moveToFront(axm);
+    }//GEN-LAST:event_AluXMatActionPerformed
 
     /**
      * @param args the command line arguments
@@ -163,10 +213,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem AluXMat;
     private javax.swing.JDesktopPane escritorio;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenu mAdministracion;
     private javax.swing.JMenu mAlumno;
     private javax.swing.JMenu mConsultas;
