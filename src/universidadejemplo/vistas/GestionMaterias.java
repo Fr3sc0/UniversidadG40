@@ -1,5 +1,6 @@
 package universidadejemplo.vistas;
 
+import javax.swing.JOptionPane;
 import universidadejemplo.AccesoADatos.MateriaData;
 import universidadejemplo.Entidades.Materia;
 
@@ -73,9 +74,19 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
 
         bEliminar.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
         bEliminar.setText("Eliminar");
+        bEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bEliminarActionPerformed(evt);
+            }
+        });
 
         bSalir.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
         bSalir.setText("Salir");
+        bSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bSalirActionPerformed(evt);
+            }
+        });
 
         tfAnio.setFont(new java.awt.Font("Sitka Subheading", 0, 14)); // NOI18N
         tfAnio.addActionListener(new java.awt.event.ActionListener() {
@@ -95,6 +106,9 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
                 bBuscarActionPerformed(evt);
             }
         });
+
+        rbEstado.setEnabled(false);
+        rbEstado.setFocusable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -177,7 +191,7 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
         tfAnio.setText("");
         rbEstado.setSelected(false);
         MateriaData md=new MateriaData();
-        Materia mat= md.buscarMateria(Integer.getInteger(tfCodigo.getText()));
+        Materia mat= md.buscarMateria(Integer.parseInt(tfCodigo.getText()));
         tfNombre.setText(mat.getNombre());
         tfAnio.setText(Integer.toString(mat.getAnio()));
         if(mat.isEstado()){
@@ -198,10 +212,25 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
 
     private void bGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bGuardarActionPerformed
         // TODO add your handling code here:
-        if(Integer.getInteger(tfCodigo.getText())<=0 || tfCodigo.equals("") || tfCodigo.equals(" ")){
-            Materia mat=new Materia(tfNombre.getText(), Integer.getInteger(tfAnio.getText()), rbEstado.isSelected());
+        if(Integer.parseInt(tfCodigo.getText())>=0){
+            Materia mat=new Materia(Integer.parseInt(tfCodigo.getText()),tfNombre.getText(), Integer.parseInt(tfAnio.getText()), rbEstado.isSelected());
+            MateriaData md=new MateriaData();
+            md.modificarMateria(mat);
+        }else{
+            JOptionPane.showMessageDialog(null, "Ingrese un codigo valido!");
         }
     }//GEN-LAST:event_bGuardarActionPerformed
+
+    private void bEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEliminarActionPerformed
+        // TODO add your handling code here:
+        MateriaData md=new MateriaData();
+        md.eliminarMateria(Integer.parseInt(tfCodigo.getText()));
+    }//GEN-LAST:event_bEliminarActionPerformed
+
+    private void bSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSalirActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_bSalirActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
