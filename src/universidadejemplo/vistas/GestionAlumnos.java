@@ -11,28 +11,26 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
 
     private AlumnoData aluData = new AlumnoData();
     private Alumno alumnoActual= null;
-    
+
     public GestionAlumnos() {
         initComponents();
     }
-
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        tfDni = new javax.swing.JTextField();
-        bBuscar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        tfApellido = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        tfNombre = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        rbEstado = new javax.swing.JRadioButton();
         jLabel6 = new javax.swing.JLabel();
+        tfDni = new javax.swing.JTextField();
+        tfApellido = new javax.swing.JTextField();
+        tfNombre = new javax.swing.JTextField();
+        rbEstado = new javax.swing.JRadioButton();
         dcFechaNac = new com.toedter.calendar.JDateChooser();
+        bBuscar = new javax.swing.JButton();
         bNuevo = new javax.swing.JButton();
         bGuardar = new javax.swing.JButton();
         bEliminar = new javax.swing.JButton();
@@ -41,15 +39,8 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
         jLabel1.setFont(new java.awt.Font("Sitka Small", 1, 18)); // NOI18N
         jLabel1.setText("Alumno");
 
-        jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
         jLabel2.setText("Documento:");
-
-        bBuscar.setText("Buscar");
-        bBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bBuscarActionPerformed(evt);
-            }
-        });
 
         jLabel3.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
         jLabel3.setText("Apellido:");
@@ -63,6 +54,15 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
         jLabel6.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
         jLabel6.setText("Fecha de Nacimiento:");
 
+        bBuscar.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
+        bBuscar.setText("Buscar");
+        bBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bBuscarActionPerformed(evt);
+            }
+        });
+
+        bNuevo.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
         bNuevo.setText("Nuevo");
         bNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -70,6 +70,7 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
             }
         });
 
+        bGuardar.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
         bGuardar.setText("Guardar");
         bGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -77,6 +78,7 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
             }
         });
 
+        bEliminar.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
         bEliminar.setText("Eliminar");
         bEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -84,6 +86,7 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
             }
         });
 
+        bSalir.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
         bSalir.setText("Salir");
         bSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -96,79 +99,77 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel6))
+                .addGap(25, 25, 25)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(rbEstado)
+                    .addComponent(tfDni)
+                    .addComponent(tfNombre)
+                    .addComponent(tfApellido)
+                    .addComponent(dcFechaNac, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(bBuscar)
+                .addGap(37, 37, 37))
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(203, 203, 203)
+                        .addGap(227, 227, 227)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6))
-                        .addGap(65, 65, 65)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(tfDni)
-                                    .addComponent(tfApellido)
-                                    .addComponent(tfNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE))
-                                .addGap(29, 29, 29)
-                                .addComponent(bBuscar))
-                            .addComponent(rbEstado)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(bEliminar)
-                                    .addComponent(dcFechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(29, 29, 29)
-                                .addComponent(bSalir))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(73, 73, 73)
+                        .addGap(82, 82, 82)
                         .addComponent(bNuevo)
-                        .addGap(39, 39, 39)
-                        .addComponent(bGuardar)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(30, 30, 30)
+                        .addComponent(bGuardar)
+                        .addGap(26, 26, 26)
+                        .addComponent(bEliminar)
+                        .addGap(18, 18, 18)
+                        .addComponent(bSalir)))
+                .addContainerGap(68, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(tfDni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bBuscar))
-                .addGap(18, 18, 18)
+                .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(tfApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
+                .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(tfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
                     .addComponent(rbEstado))
-                .addGap(18, 18, 18)
+                .addGap(8, 8, 8)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel6)
                     .addComponent(dcFechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bNuevo)
                     .addComponent(bGuardar)
                     .addComponent(bEliminar)
                     .addComponent(bSalir))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addGap(35, 35, 35))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-     
+
     private void bBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBuscarActionPerformed
         try{
         Integer dni = Integer.parseInt(tfDni.getText());
@@ -185,18 +186,18 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "Usted debe ingresar solo numeros enteros.");
             tfDni.setText("");
         }
-    }//GEN-LAST:event_bBuscarActionPerformed
-    private void limpiarCampos(){
+    }    
+        private void limpiarCampos(){
         tfApellido.setText("");
         tfNombre.setText("");
         tfDni.setText("");
         rbEstado.setSelected(true);
         dcFechaNac.setDate(new Date());
-    }
+    }//GEN-LAST:event_bBuscarActionPerformed
+
     private void bNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bNuevoActionPerformed
         limpiarCampos();
         alumnoActual=null;
-        
     }//GEN-LAST:event_bNuevoActionPerformed
 
     private void bGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bGuardarActionPerformed

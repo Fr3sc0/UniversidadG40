@@ -9,8 +9,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import universidadejemplo.Entidades.Alumno;
 
@@ -104,7 +102,6 @@ public class AlumnoData {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumno.");
         }
          return alu;
-        
     }
      public Alumno buscarAlumnoPorDni(int dni){
         String sql="SELECT idAlumno, dni, apellido, nombre, fechaNacimiento FROM alumno WHERE dni = ? AND estado = 1";
@@ -153,7 +150,6 @@ public class AlumnoData {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumno.");
         }
-        return alumnos;
-        
+        return alumnos;  
     }
 }
