@@ -95,7 +95,7 @@ public class MateriaData {
          return mat;
     }
     public List <Materia> listarMaterias(){
-        String sql="SELECT idMateria, nombre, anio FROM alumno WHERE estado = 1";
+        String sql="SELECT idMateria, nombre, anio FROM Materia WHERE estado = 1";
         ArrayList <Materia> materias= new ArrayList<>();
          try {
             PreparedStatement ps= con.prepareStatement(sql);

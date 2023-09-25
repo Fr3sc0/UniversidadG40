@@ -283,7 +283,6 @@ public class Inscripciones extends javax.swing.JInternalFrame {
             Materia m=new Materia(idMateria,nombreMateria,anio, true);
             Inscripcion i =new Inscripcion(a,m,0);
             inscData.guardarInscripcion(i);
-            borrarFilaTabla();
             
             
         }

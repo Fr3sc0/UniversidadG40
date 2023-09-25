@@ -13,6 +13,7 @@ public class AlumnoXMateria extends javax.swing.JInternalFrame {
     
     public AlumnoXMateria() {
         initComponents();
+        armarTabla();
     }
 
    
@@ -116,7 +117,7 @@ public class AlumnoXMateria extends javax.swing.JInternalFrame {
     }                                          
     private void armarTabla() {
 
-        String materiaSeleccionada = cbMaterias.getSelectedItem().toString();
+        //String materiaSeleccionada = cbMaterias.getSelectedItem().toString();
         DefaultTableModel modelo = new DefaultTableModel();
 
         modelo.addColumn("ID");
