@@ -190,16 +190,16 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
         tfNombre.setText("");
         tfAnio.setText("");
         rbEstado.setSelected(false);
-        MateriaData md=new MateriaData();
-        Materia mat= md.buscarMateria(Integer.parseInt(tfCodigo.getText()));
+        MateriaData md = new MateriaData();
+        Materia mat = md.buscarMateria(Integer.parseInt(tfCodigo.getText()));
         tfNombre.setText(mat.getNombre());
         tfAnio.setText(Integer.toString(mat.getAnio()));
-        if(mat.isEstado()){
+        if (mat.isEstado()) {
             rbEstado.setSelected(true);
-        }else{
+        } else {
             rbEstado.setSelected(false);
         }
-        
+
     }//GEN-LAST:event_bBuscarActionPerformed
 
     private void bNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bNuevoActionPerformed
@@ -207,23 +207,31 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
         tfCodigo.setText("");
         tfNombre.setText("");
         tfAnio.setText("");
-        rbEstado.setSelected(false);
+        rbEstado.setSelected(true);
     }//GEN-LAST:event_bNuevoActionPerformed
 
     private void bGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bGuardarActionPerformed
         // TODO add your handling code here:
-        if(Integer.parseInt(tfCodigo.getText())>=0){
-            Materia mat=new Materia(Integer.parseInt(tfCodigo.getText()),tfNombre.getText(), Integer.parseInt(tfAnio.getText()), rbEstado.isSelected());
-            MateriaData md=new MateriaData();
-            md.modificarMateria(mat);
-        }else{
-            JOptionPane.showMessageDialog(null, "Ingrese un codigo valido!");
+        String codigo=this.tfCodigo.getText();
+        try {
+            if (codigo == null || codigo.equals("")) {
+                Materia mat = new Materia(tfNombre.getText(), Integer.parseInt(tfAnio.getText()), rbEstado.isSelected());
+                MateriaData md = new MateriaData();
+                md.guardarMateria(mat);
+            } else if (Integer.parseInt(codigo) >= 0) {
+                Materia mat = new Materia(Integer.parseInt(tfCodigo.getText()), tfNombre.getText(), Integer.parseInt(tfAnio.getText()), rbEstado.isSelected());
+                MateriaData md = new MateriaData();
+                md.modificarMateria(mat);
+            }
+        } catch (NumberFormatException nfe) {
+            JOptionPane.showMessageDialog(null,"Ingrese un código válido.");
         }
+
     }//GEN-LAST:event_bGuardarActionPerformed
 
     private void bEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEliminarActionPerformed
         // TODO add your handling code here:
-        MateriaData md=new MateriaData();
+        MateriaData md = new MateriaData();
         md.eliminarMateria(Integer.parseInt(tfCodigo.getText()));
     }//GEN-LAST:event_bEliminarActionPerformed
 
