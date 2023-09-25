@@ -257,18 +257,18 @@ public class Inscripciones extends javax.swing.JInternalFrame {
         borrarFilaTabla();
         rbNoInscriptas.setSelected(false);
         cargaDatosInscriptas();
-        bInscribir.setEnabled(true);
         bInscribir.setEnabled(false);
+        bAInscripcion.setEnabled(true);
         
     }//GEN-LAST:event_rbInscriptasActionPerformed
 
     private void rbNoInscriptasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbNoInscriptasActionPerformed
         // TODO add your handling code here:
         borrarFilaTabla();
-        bInscribir.setSelected(false);
+        rbInscriptas.setSelected(false);
         cargaDatosNoInscriptas();
-        rbNoInscriptas.setEnabled(false);
-        rbNoInscriptas.setEnabled(true);
+        bAInscripcion.setEnabled(false);
+        bInscribir.setEnabled(true);
     }//GEN-LAST:event_rbNoInscriptasActionPerformed
 
     private void bInscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bInscribirActionPerformed
