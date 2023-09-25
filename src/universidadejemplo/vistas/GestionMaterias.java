@@ -215,7 +215,7 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
         String codigo=this.tfCodigo.getText();
         try {
             if (codigo == null || codigo.equals("")) {
-                Materia mat = new Materia(tfNombre.getText(), Integer.parseInt(tfAnio.getText()), rbEstado.isSelected());
+                Materia mat = new Materia(tfNombre.getText(), Integer.parseInt(tfAnio.getText()), true);
                 MateriaData md = new MateriaData();
                 md.guardarMateria(mat);
             } else if (Integer.parseInt(codigo) >= 0) {
