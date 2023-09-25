@@ -7,7 +7,7 @@ public class UniversidadG40 {
 
     public static void main(String[] args) {
         AlumnoData alu = new AlumnoData();
-        Alumno alum= new Alumno(444,"Francisco", "Iorfino", LocalDate.of(1997, 5, 20), true);
+        Alumno alum= new Alumno(555,"Torres", "Laila", LocalDate.of(2000, 10, 4), true);
         //alu.guardarAlumno(alum);
         //alu.modificarAlumno();
         //alu.eliminarAlumno(1);

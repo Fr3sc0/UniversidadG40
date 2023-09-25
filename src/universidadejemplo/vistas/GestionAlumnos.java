@@ -2,14 +2,15 @@ package universidadejemplo.vistas;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.Date;
 import javax.swing.JOptionPane;
-import universidadejemplo.AccesoADatos.AlumnoData;
+import universidadejemplo.AccesoADatos.*;
 import universidadejemplo.Entidades.Alumno;
 
 public class GestionAlumnos extends javax.swing.JInternalFrame {
 
+    private AlumnoData aluData = new AlumnoData();
+    private Alumno alumnoActual= null;
     
     public GestionAlumnos() {
         initComponents();
@@ -40,6 +41,7 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
         jLabel1.setFont(new java.awt.Font("Sitka Small", 1, 18)); // NOI18N
         jLabel1.setText("Alumno");
 
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel2.setText("Documento:");
 
         bBuscar.setText("Buscar");
@@ -166,32 +168,72 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-     AlumnoData ad = new AlumnoData();
+     
     private void bBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBuscarActionPerformed
-        ad.buscarAlumnoPorDni(Integer.parseInt(tfDni.getText()));
+        try{
+        Integer dni = Integer.parseInt(tfDni.getText());
+        alumnoActual= aluData.buscarAlumnoPorDni(dni);
+            if (alumnoActual != null) {
+                tfApellido.setText(alumnoActual.getApellido());
+                tfNombre.setText(alumnoActual.getNombre());
+                rbEstado.setSelected(alumnoActual.isEstado());
+                LocalDate lc= alumnoActual.getFechaNacimiento();
+                java.util.Date date= java.util.Date.from(lc.atStartOfDay(ZoneId.systemDefault()).toInstant());
+                dcFechaNac.setDate(date);
+            }
+        }catch(NumberFormatException Ex){
+            JOptionPane.showMessageDialog(this, "Usted debe ingresar solo numeros enteros.");
+            tfDni.setText("");
+        }
     }//GEN-LAST:event_bBuscarActionPerformed
-
-    private void bNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bNuevoActionPerformed
+    private void limpiarCampos(){
         tfApellido.setText("");
         tfNombre.setText("");
         tfDni.setText("");
-        rbEstado.setSelected(false);
-        dcFechaNac.setCalendar(null);
+        rbEstado.setSelected(true);
+        dcFechaNac.setDate(new Date());
+    }
+    private void bNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bNuevoActionPerformed
+        limpiarCampos();
+        alumnoActual=null;
+        
     }//GEN-LAST:event_bNuevoActionPerformed
 
     private void bGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bGuardarActionPerformed
-        /*if(){
-            LocalDate fecha= dcFechaNac.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-            Alumno al=new Alumno(Integer.parseInt(tfDni.getText()), tfApellido.getText(),tfNombre.getText(), fecha, rbEstado.isSelected());
-            ad.modificarAlumno(al);
-        }else{
-            JOptionPane.showMessageDialog(null, "Ingrese un dni valido!");
-        }*/
+        try{
+        Integer dni=Integer.parseInt(tfDni.getText());
+        String nombre=tfNombre.getText();
+        String apellido=tfApellido.getText();
+            if (nombre.isEmpty()||apellido.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "No puede haber campos vacíos.");
+                return;
+            }
+            java.util.Date sfecha=dcFechaNac.getDate();
+            LocalDate fechaNac=sfecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            Boolean estado= rbEstado.isSelected();
+            if (alumnoActual==null) {
+                alumnoActual=new Alumno(dni, apellido, nombre, fechaNac, estado);
+                aluData.guardarAlumno(alumnoActual);
+            }else{
+                alumnoActual.setDni(dni);
+                alumnoActual.setApellido(apellido);
+                alumnoActual.setNombre(nombre);
+                alumnoActual.setFechaNacimiento(fechaNac);
+                aluData.modificarAlumno(alumnoActual);
+            }
+        }catch(NumberFormatException nfe){
+            JOptionPane.showMessageDialog(this, "Debe ingresar un DNI válido.");
+        }
     }//GEN-LAST:event_bGuardarActionPerformed
 
     private void bEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEliminarActionPerformed
-        AlumnoData ad=new AlumnoData();
-        ad.eliminarAlumno(Integer.parseInt(tfDni.getText()));
+        if (alumnoActual!=null) {
+            aluData.eliminarAlumno(alumnoActual.getIdAlumno());
+            alumnoActual=null;
+            limpiarCampos();
+        }else{
+            JOptionPane.showMessageDialog(this, "No hay un alumno seleccionado.");
+        }
     }//GEN-LAST:event_bEliminarActionPerformed
 
     private void bSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSalirActionPerformed

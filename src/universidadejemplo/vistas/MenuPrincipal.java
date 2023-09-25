@@ -108,6 +108,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenuBar1.add(mConsultas);
 
         mSalir.setText("Salir");
+        mSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mSalirActionPerformed(evt);
+            }
+        });
         jMenuBar1.add(mSalir);
 
         setJMenuBar(jMenuBar1);
@@ -175,6 +180,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
         escritorio.add(axm);
         escritorio.moveToFront(axm);
     }//GEN-LAST:event_AluXMatActionPerformed
+
+    private void mSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mSalirActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mSalirActionPerformed
 
     /**
      * @param args the command line arguments
