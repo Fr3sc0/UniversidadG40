@@ -33,8 +33,8 @@ public class UniversidadG40 {
         AlumnoData ad= new AlumnoData();
         MateriaData md= new MateriaData();
         InscripcionData id= new InscripcionData();
-        Alumno al= ad.buscarAlumno(4);
-        Materia mat= md.buscarMateria(2);
+        Alumno al= ad.buscarAlumno(5);
+        Materia mat= md.buscarMateria(4);
         Inscripcion ins= new Inscripcion(al, mat, 7);
         //id.guardarInscripcion(ins);
         for(Inscripcion insc: id.obtenerInscripciones()){
@@ -42,7 +42,7 @@ public class UniversidadG40 {
             System.out.println("Apellido: "+insc.getAlumno().getApellido());
             System.out.println("Materia: "+insc.getMateria().getNombre());
         }
-       for(Materia materia: id.obtenerMateriasNoCursadas(3)){
+       for(Materia materia: id.obtenerMateriasCursadas(5)){
            System.out.println("Nombre: "+ materia.getNombre());
        }
     }
