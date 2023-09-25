@@ -281,6 +281,10 @@ public class Inscripciones extends javax.swing.JInternalFrame {
             String nombreMateria = (String) modelo.getValueAt(filaSeleccionada, 1);
             int anio=(Integer) modelo.getValueAt(filaSeleccionada, 2);
             Materia m=new Materia(idMateria,nombreMateria,anio, true);
+            Inscripcion i =new Inscripcion(a,m,0);
+            inscData.guardarInscripcion(i);
+            borrarFilaTabla();
+            
             
         }
     }//GEN-LAST:event_bInscribirActionPerformed
