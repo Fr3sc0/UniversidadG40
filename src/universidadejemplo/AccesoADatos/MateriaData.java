@@ -2,15 +2,12 @@
 package universidadejemplo.AccesoADatos;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import universidadejemplo.Entidades.Materia;
 
@@ -21,8 +18,7 @@ public class MateriaData {
         con = Conexion.getConexion();
     }
     public void guardarMateria(Materia materia){
-        String sql= "INSERT INTO materia(nombre, anio, estado)"
-                + "VALUE(?, ?, ?)";
+        String sql= "INSERT INTO materia(nombre, anio, estado) VALUE(?, ?, ?)";
         
         try {
             PreparedStatement ps= con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);

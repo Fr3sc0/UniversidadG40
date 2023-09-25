@@ -6,7 +6,10 @@ import universidadejemplo.AccesoADatos.*;
 import universidadejemplo.Entidades.*;
 
 public class AlumnoXMateria extends javax.swing.JInternalFrame {
-
+    
+    private AlumnoData aluData = new AlumnoData();
+    private Alumno alumnoActual= null;
+    private MateriaData md=new MateriaData();
     
     public AlumnoXMateria() {
         initComponents();
@@ -100,7 +103,6 @@ public class AlumnoXMateria extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cbMateriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbMateriasActionPerformed
-        MateriaData md = new MateriaData();
 
         List<Materia> materias = md.listarMaterias();
 
