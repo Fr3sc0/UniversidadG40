@@ -1,20 +1,13 @@
 package universidadejemplo.vistas;
 
-import universidadejemplo.AccesoADatos.AlumnoData;
-import universidadejemplo.AccesoADatos.InscripcionData;
-import universidadejemplo.AccesoADatos.MateriaData;
-import universidadejemplo.Entidades.Alumno;
-import universidadejemplo.Entidades.Inscripcion;
-import universidadejemplo.Entidades.Materia;
+import universidadejemplo.AccesoADatos.*;
+import universidadejemplo.Entidades.*;
+
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
 
-/**
- *
- * @author Blas
- */
 public class Inscripciones extends javax.swing.JInternalFrame {
     
     private List<Materia> listaM;
@@ -27,9 +20,7 @@ public class Inscripciones extends javax.swing.JInternalFrame {
     private DefaultTableModel modelo;
     
     
-    /**
-     * Creates new form Inscripciones
-     */
+   
     public Inscripciones() {
         initComponents();
         aData = new AlumnoData();
@@ -253,7 +244,6 @@ public class Inscripciones extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void rbInscriptasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbInscriptasActionPerformed
-        // TODO add your handling code here:
         borrarFilaTabla();
         rbNoInscriptas.setSelected(false);
         cargaDatosInscriptas();
@@ -263,7 +253,7 @@ public class Inscripciones extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_rbInscriptasActionPerformed
 
     private void rbNoInscriptasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbNoInscriptasActionPerformed
-        // TODO add your handling code here:
+       
         borrarFilaTabla();
         rbInscriptas.setSelected(false);
         cargaDatosNoInscriptas();
@@ -272,7 +262,7 @@ public class Inscripciones extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_rbNoInscriptasActionPerformed
 
     private void bInscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bInscribirActionPerformed
-        // TODO add your handling code here:
+        
         int filaSeleccionada=tMaterias.getSelectedRow();
         if(filaSeleccionada!= -1){
             Alumno a=(Alumno)cbAlumnos.getSelectedItem();
@@ -289,7 +279,7 @@ public class Inscripciones extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_bInscribirActionPerformed
 
     private void bAInscripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAInscripcionActionPerformed
-        // TODO add your handling code here:
+        
         int filaSeleccionada = tMaterias.getSelectedRow();
         if(filaSeleccionada!=-1){
                         
@@ -303,13 +293,13 @@ public class Inscripciones extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_bAInscripcionActionPerformed
 
     private void bSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSalirActionPerformed
-        // TODO add your handling code here:
+       
         dispose();
         
     }//GEN-LAST:event_bSalirActionPerformed
 
     private void cbAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbAlumnosActionPerformed
-        // TODO add your handling code here:
+     
         //??
     }//GEN-LAST:event_cbAlumnosActionPerformed
 
