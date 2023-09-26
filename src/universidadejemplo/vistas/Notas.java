@@ -10,74 +10,67 @@ import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
 public class Notas extends javax.swing.JInternalFrame {
-    
+
     private List<Materia> listaM;
     private List<Alumno> listaA;
-    
-    
+
     private InscripcionData inscData;
     private MateriaData mData;
     private AlumnoData aData;
-    
-    private DefaultTableModel modelo;  
-         
-     
+
+    private DefaultTableModel modelo;
+
     public Notas() {
         initComponents();
-        
 
         aData = new AlumnoData();
-        listaA = aData.listarAlumnos();       
+        listaA = aData.listarAlumnos();
         inscData = new InscripcionData();
-        mData = new MateriaData();        
+        mData = new MateriaData();
         modelo = new DefaultTableModel();
-                     
-       
+
         cargaAlumnos();
         armarCabeceraTabla();
         obtenerInscripcionesPorAlumno();
-        
+
     }
-    
-    private void cargaAlumnos(){
-        for(Alumno item: listaA){
+
+    private void cargaAlumnos() {
+        for (Alumno item : listaA) {
             cbAlumnos.addItem(item);
         }
     }
-     
-     private void armarCabeceraTabla(){
+
+    private void armarCabeceraTabla() {
         ArrayList<Object> filacabecera = new ArrayList<>();
         filacabecera.add("idMateria");
         filacabecera.add("nombre");
-        filacabecera.add("nota");        
+        filacabecera.add("nota");
         //filacabecera.add ("anio");
-        for(Object it: filacabecera){
-            modelo. addColumn(it);
-        }  
-        
-        
+        for (Object it : filacabecera) {
+            modelo.addColumn(it);
+        }
+
         tAlumnos.setModel(modelo);
     }
-     
-    private void borrarFilaTabla(){
-        int indice = modelo.getRowCount() -1;
-        
-        for(int i = indice;i>=0;i--){
-             modelo.removeRow(i);
+
+    private void borrarFilaTabla() {
+        int indice = modelo.getRowCount() - 1;
+
+        for (int i = indice; i >= 0; i--) {
+            modelo.removeRow(i);
         }
-        }
-        private void obtenerInscripcionesPorAlumno(){
+    }
+
+    private void obtenerInscripcionesPorAlumno() {
         borrarFilaTabla();
         Alumno selec = (Alumno) cbAlumnos.getSelectedItem();
-        List <Inscripcion> lista =(ArrayList) inscData.obtenerInscripcionesPorAlumno(selec.getIdAlumno());
-        for (Inscripcion m : lista){
-            modelo.addRow(new Object[] {m.getMateria().getIdMateria(), m.getMateria().getNombre(),m.getNota()});
+        List<Inscripcion> lista = (ArrayList) inscData.obtenerInscripcionesPorAlumno(selec.getIdAlumno());
+        for (Inscripcion m : lista) {
+            modelo.addRow(new Object[]{m.getMateria().getIdMateria(), m.getMateria().getNombre(), m.getNota()});
         }
-        } 
-        
-        
-        
-           
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -180,28 +173,33 @@ public class Notas extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSalirActionPerformed
-     dispose();
+        dispose();
     }//GEN-LAST:event_bSalirActionPerformed
 
     private void cbAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbAlumnosActionPerformed
-      obtenerInscripcionesPorAlumno();
+        obtenerInscripcionesPorAlumno();
     }//GEN-LAST:event_cbAlumnosActionPerformed
 
     private void bGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bGuardarActionPerformed
-        int filaSeleccionada=tAlumnos.getSelectedRow();
-        if(filaSeleccionada!= -1){
-        Alumno a=(Alumno)cbAlumnos.getSelectedItem();
-        double nota=(double) modelo.getValueAt(filaSeleccionada, 2);
-                
-        int idMateria = (int) modelo.getValueAt(filaSeleccionada, 0);
-        
-        inscData.actualizarNota(a.getIdAlumno(),idMateria,nota);
-        
-       
+        int filaSeleccionada = tAlumnos.getSelectedRow();
+        if (filaSeleccionada != -1) {
+            try {
+                Alumno a = (Alumno) cbAlumnos.getSelectedItem();
+                double nota = Double.parseDouble(modelo.getValueAt(filaSeleccionada, 2).toString());
+                if (nota > 10 && nota < 0) {
+                    JOptionPane.showMessageDialog(null, "Porfavor ingrese una nota valida!");
+                } else {
+                    int idMateria = (int) modelo.getValueAt(filaSeleccionada, 0);
+
+                    inscData.actualizarNota(a.getIdAlumno(), idMateria, nota);
+                }
+            } catch (NumberFormatException nfe) {
+                JOptionPane.showMessageDialog(null, "Error al ingresar la nota");
+            }
+        }
     }//GEN-LAST:event_bGuardarActionPerformed
-    }
-   
-    
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bGuardar;
     private javax.swing.JButton bSalir;
@@ -212,4 +210,3 @@ public class Notas extends javax.swing.JInternalFrame {
     private javax.swing.JTable tAlumnos;
     // End of variables declaration//GEN-END:variables
 }
-

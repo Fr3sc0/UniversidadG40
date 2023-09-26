@@ -3,11 +3,12 @@ package universidadejemplo.vistas;
 import java.awt.Color;
 
 public class MenuPrincipal extends javax.swing.JFrame {
-
+    Color c=new Color(101,100,100);
     public MenuPrincipal() {
         initComponents();
+        this.getContentPane().setBackground(c);
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -141,7 +142,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         escritorio.repaint();
         GestionAlumnos ga=new GestionAlumnos();
         ga.setVisible(true);
-        ga.getContentPane().setBackground(new Color(140,10,100));
+        ga.getContentPane().setBackground(c);
         escritorio.add(ga);
         escritorio.moveToFront(ga);
     }//GEN-LAST:event_menuAlumnoActionPerformed
@@ -152,6 +153,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         escritorio.repaint();
         Notas notas=new Notas();
         notas.setVisible(true);
+        notas.getContentPane().setBackground(c);
         escritorio.add(notas);
         escritorio.moveToFront(notas);
     }//GEN-LAST:event_menuNotasActionPerformed
@@ -161,6 +163,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         escritorio.removeAll();
         escritorio.repaint();
         GestionMaterias gm=new GestionMaterias();
+        gm.getContentPane().setBackground(c);
         gm.setVisible(true);
         escritorio.add(gm);
         escritorio.moveToFront(gm);
@@ -171,6 +174,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         escritorio.removeAll();
         escritorio.repaint();
         Inscripciones ins=new Inscripciones();
+        ins.getContentPane().setBackground(c);
         ins.setVisible(true);
         escritorio.add(ins);
         escritorio.moveToFront(ins);
@@ -181,6 +185,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         escritorio.removeAll();
         escritorio.repaint();
         AlumnoXMateria axm=new AlumnoXMateria();
+        axm.getContentPane().setBackground(c);
         axm.setVisible(true);
         escritorio.add(axm);
         escritorio.moveToFront(axm);
