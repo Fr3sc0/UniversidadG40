@@ -1,10 +1,10 @@
-
 package universidadejemplo.Entidades;
 
 import java.time.LocalDate;
 
 public class Materia {
-    private int idMateria; 
+
+    private int idMateria;
     private String Nombre;
     private int anio;
     private boolean estado;
@@ -41,8 +41,6 @@ public class Materia {
         this.anio = anio;
     }
 
-    
-
     public String getNombre() {
         return Nombre;
     }
@@ -61,7 +59,7 @@ public class Materia {
 
     @Override
     public String toString() {
-        return "Materia{" + "idMateria=" + idMateria +  ", Nombre=" + Nombre + ", anio=" + anio + '}';
+        return Nombre + ", " + anio;
     }
-    
+
 }

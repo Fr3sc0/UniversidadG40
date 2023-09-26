@@ -1,18 +1,29 @@
 package universidadejemplo.vistas;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import universidadejemplo.AccesoADatos.*;
 import universidadejemplo.Entidades.*;
 
 public class AlumnoXMateria extends javax.swing.JInternalFrame {
-    
-    private AlumnoData aluData = new AlumnoData();
-    private Alumno alumnoActual= null;
-    private MateriaData md=new MateriaData();
+    private List <Materia> listaM;
+    private AlumnoData aluData;
+    private Alumno alumnoActual;
+    private MateriaData md;
+    private Materia mat;
+    private InscripcionData inscData;
+    DefaultTableModel modelo = new DefaultTableModel();
     
     public AlumnoXMateria() {
         initComponents();
+        aluData = new AlumnoData();
+        md=new MateriaData();
+        mat=new Materia();
+        inscData=new InscripcionData();
+        listaM= md.listarMaterias();
+        
+        cargaMaterias();
         armarTabla();
     }
 
@@ -34,6 +45,7 @@ public class AlumnoXMateria extends javax.swing.JInternalFrame {
         jLabel2.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
         jLabel2.setText("Seleccione una materia:");
 
+        cbMaterias.setFont(new java.awt.Font("Sitka Subheading", 0, 14)); // NOI18N
         cbMaterias.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbMateriasActionPerformed(evt);
@@ -51,6 +63,7 @@ public class AlumnoXMateria extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tAlumnos.setEnabled(false);
         jScrollPane1.setViewportView(tAlumnos);
 
         bSalir.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
@@ -97,34 +110,44 @@ public class AlumnoXMateria extends javax.swing.JInternalFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(bSalir)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cbMateriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbMateriasActionPerformed
-
-        List<Materia> materias = md.listarMaterias();
-
-        cbMaterias.removeAllItems();
-
-        for (Materia materia : materias) {
-            cbMaterias.addItem(materia.getNombre());
+    private void cargaMaterias(){
+        for(Materia m: listaM){
+            cbMaterias.addItem(m);
         }
-
-        armarTabla();
+    }
+    
+    private void borrarFilaTabla(){
+        int indice = modelo.getRowCount() -1;
+        
+        for(int i = indice;i>=0;i--){
+             modelo.removeRow(i);
+        }
+    }
+    
+    private void cbMateriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbMateriasActionPerformed
+        borrarFilaTabla();
+        mat =(Materia) cbMaterias.getSelectedItem();
+         List<Alumno> lista=(ArrayList) inscData.obtenerAlumnosXMateria(mat.getIdMateria());
+         for(Alumno a:lista){
+             modelo.addRow(new Object[]{a.getIdAlumno(), a.getDni(), a.getApellido(), a.getNombre()});
+         }
     }                                          
     private void armarTabla() {
 
         //String materiaSeleccionada = cbMaterias.getSelectedItem().toString();
-        DefaultTableModel modelo = new DefaultTableModel();
+        
 
         modelo.addColumn("ID");
         modelo.addColumn("DNI");
         modelo.addColumn("Apellido");
         modelo.addColumn("Nombre");
-        modelo.addColumn("Fecha de Nacimiento");
+        //modelo.addColumn("Fecha de Nacimiento");
 
         AlumnoData ad = new AlumnoData();
         List<Alumno> listaAlumnos = ad.listarAlumnos();
@@ -135,7 +158,7 @@ public class AlumnoXMateria extends javax.swing.JInternalFrame {
                 alumno.getDni(),
                 alumno.getApellido(),
                 alumno.getNombre(),
-                alumno.getFechaNacimiento()
+                //alumno.getFechaNacimiento()
             };
 
             modelo.addRow(fila);
@@ -153,7 +176,7 @@ public class AlumnoXMateria extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bSalir;
-    private javax.swing.JComboBox<String> cbMaterias;
+    private javax.swing.JComboBox<Materia> cbMaterias;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;

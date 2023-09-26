@@ -34,7 +34,7 @@ public class Inscripciones extends javax.swing.JInternalFrame {
         
         
     }
-
+ 
     private void cargaAlumnos(){
         for(Alumno item: listaA){
             cbAlumnos.addItem(item);
