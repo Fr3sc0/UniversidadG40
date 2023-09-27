@@ -1,7 +1,7 @@
 package universidadejemplo.vistas;
 
 import javax.swing.JOptionPane;
-import universidadejemplo.AccesoADatos.MateriaData;
+import universidadejemplo.AccesoADatos.*;
 import universidadejemplo.Entidades.Materia;
 
 /**
@@ -10,9 +10,8 @@ import universidadejemplo.Entidades.Materia;
  */
 public class GestionMaterias extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form GestionMaterias
-     */
+    private MateriaData md = new MateriaData();
+    private Materia materiaActual= null;
     public GestionMaterias() {
         initComponents();
     }
@@ -186,32 +185,32 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_tfAnioActionPerformed
 
     private void bBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBuscarActionPerformed
-        // TODO add your handling code here:
-        tfNombre.setText("");
-        tfAnio.setText("");
-        rbEstado.setSelected(false);
-        MateriaData md = new MateriaData();
-        Materia mat = md.buscarMateria(Integer.parseInt(tfCodigo.getText()));
-        tfNombre.setText(mat.getNombre());
-        tfAnio.setText(Integer.toString(mat.getAnio()));
-        if (mat.isEstado()) {
-            rbEstado.setSelected(true);
-        } else {
-            rbEstado.setSelected(false);
+        try{
+        Integer codigo = Integer.parseInt(tfCodigo.getText());
+        materiaActual= md.buscarMateria(codigo);
+            if (materiaActual != null) {
+                tfNombre.setText(materiaActual.getNombre());
+                tfAnio.setText(Integer.toString(materiaActual.getAnio()));
+                rbEstado.setSelected(materiaActual.isEstado());
+            }
+        }catch(NumberFormatException Ex){
+            JOptionPane.showMessageDialog(this, "Usted debe ingresar solo numeros enteros.");
+            tfCodigo.setText("");
         }
-
     }//GEN-LAST:event_bBuscarActionPerformed
 
-    private void bNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bNuevoActionPerformed
-        // TODO add your handling code here:
+    private void limpiarCampos(){
         tfCodigo.setText("");
         tfNombre.setText("");
         tfAnio.setText("");
         rbEstado.setSelected(true);
+    }  
+    private void bNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bNuevoActionPerformed
+        limpiarCampos();
     }//GEN-LAST:event_bNuevoActionPerformed
 
     private void bGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bGuardarActionPerformed
-        // TODO add your handling code here:
+        
         String codigo=this.tfCodigo.getText();
         try {
             if (codigo == null || codigo.equals("")) {
@@ -230,9 +229,13 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_bGuardarActionPerformed
 
     private void bEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEliminarActionPerformed
-        // TODO add your handling code here:
-        MateriaData md = new MateriaData();
-        md.eliminarMateria(Integer.parseInt(tfCodigo.getText()));
+        if (materiaActual!=null) {
+            md.eliminarMateria(materiaActual.getIdMateria());
+            materiaActual=null;
+            limpiarCampos();
+        }else{
+            JOptionPane.showMessageDialog(this, "No hay una materia seleccionado.");
+        }
     }//GEN-LAST:event_bEliminarActionPerformed
 
     private void bSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSalirActionPerformed

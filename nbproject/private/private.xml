@@ -13,14 +13,13 @@
             <file>file:/D:/Documents/NetBeansProjects/E3G4/UniversidadG40/src/universidadejemplo/Entidades/Alumno.java</file>
         </group>
         <group>
-            <file>file:/C:/Users/Tomitorres/Documents/GitHub/UniversidadG40/src/universidadejemplo/AccesoADatos/Conexion.java</file>
-            <file>file:/C:/Users/Tomitorres/Documents/GitHub/UniversidadG40/src/universidadejemplo/Entidades/Materia.java</file>
-            <file>file:/C:/Users/Tomitorres/Documents/GitHub/UniversidadG40/src/universidadejemplo/Entidades/Alumno.java</file>
-            <file>file:/C:/Users/Tomitorres/Documents/GitHub/UniversidadG40/src/universidadejemplo/Entidades/UniversidadG40.java</file>
-            <file>file:/C:/Users/Tomitorres/Documents/GitHub/UniversidadG40/src/universidadejemplo/AccesoADatos/InscripcionData.java</file>
+            <file>file:/C:/Users/Tomitorres/Documents/GitHub/UniversidadG40/src/universidadejemplo/vistas/Notas.java</file>
+            <file>file:/C:/Users/Tomitorres/Documents/GitHub/UniversidadG40/src/universidadejemplo/vistas/GestionAlumnos.java</file>
+            <file>file:/C:/Users/Tomitorres/Documents/GitHub/UniversidadG40/src/universidadejemplo/vistas/Inscripciones.java</file>
+            <file>file:/C:/Users/Tomitorres/Documents/GitHub/UniversidadG40/src/universidadejemplo/vistas/AlumnoXMateria.java</file>
+            <file>file:/C:/Users/Tomitorres/Documents/GitHub/UniversidadG40/src/universidadejemplo/vistas/MenuPrincipal.java</file>
             <file>file:/C:/Users/Tomitorres/Documents/GitHub/UniversidadG40/src/universidadejemplo/AccesoADatos/MateriaData.java</file>
-            <file>file:/C:/Users/Tomitorres/Documents/GitHub/UniversidadG40/src/universidadejemplo/AccesoADatos/AlumnoData.java</file>
-            <file>file:/C:/Users/Tomitorres/Documents/GitHub/UniversidadG40/src/universidadejemplo/Entidades/Inscripcion.java</file>
+            <file>file:/C:/Users/Tomitorres/Documents/GitHub/UniversidadG40/src/universidadejemplo/vistas/GestionMaterias.java</file>
         </group>
     </open-files>
 </project-private>
